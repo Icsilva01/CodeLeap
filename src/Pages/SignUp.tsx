@@ -85,7 +85,7 @@ export function SignUp() {
           }}
         />
 
-        <Box display="flex" justifyContent="flex-end" pt={2} pb={3}>
+        <Box display="flex" justifyContent="flex-end" pt={2}>
           <Button
             onClick={handleContinue}
             disabled={!inputValue.trim()}
