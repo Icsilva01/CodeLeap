@@ -35,64 +35,66 @@ export function SignUp() {
         boxShadow={0}
         alignItems="stretch"
       >
-        <Stack gap={3}>
+        {/* Gap de 24px entre os textos */}
+        <Stack spacing={3}>
           <Typography fontWeight={700} color="textPrimary" fontSize="22px">
             Welcome to CodeLeap network!
           </Typography>
           <Typography fontSize="16px" color="textPrimary">
-            Please enter your usernameaa
+            Please enter your username
           </Typography>
         </Stack>
 
-        <TextField
-          placeholder="John Doe"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          fullWidth
-          sx={{
-            width: { xs: "100%", sm: 452 },
-            height: 32,
-            paddingY: 1,
-            "& .MuiOutlinedInput-root": {
+        {/* Gap de 8px entre último Typography e TextField */}
+        <Box mt={1}>
+          <TextField
+            placeholder="John Doe"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            fullWidth
+            sx={{
+              width: { xs: "100%", sm: 452 },
               height: 32,
-              borderRadius: 1,
-              "& fieldset": {
-                borderColor: "#777777",
-                borderWidth: 1,
+              "& .MuiOutlinedInput-root": {
+                height: 32,
+                borderRadius: 1,
+                "& fieldset": {
+                  borderColor: "#777777",
+                  borderWidth: 1,
+                },
+                "&:hover fieldset": {
+                  borderColor: "#777777",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#7695EC",
+                },
               },
-              "&:hover fieldset": {
-                borderColor: "#777777",
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: "#7695EC",
-              },
-            },
-            "& .MuiInputBase-input": {
-              padding: "6px 12px",
-              height: 20,
-              fontWeight: 400,
-              fontSize: "14px",
-              lineHeight: "100%",
-              letterSpacing: "0%",
-              "&::placeholder": {
+              "& .MuiInputBase-input": {
+                padding: "6px 12px",
+                height: 20,
                 fontWeight: 400,
                 fontSize: "14px",
                 lineHeight: "100%",
-                opacity: 1,
-                color: "#777777",
+                letterSpacing: "0%",
+                "&::placeholder": {
+                  fontWeight: 400,
+                  fontSize: "14px",
+                  lineHeight: "100%",
+                  opacity: 1,
+                  color: "#777777",
+                },
               },
-            },
-          }}
-        />
-
-        <Box display="flex" justifyContent="flex-end" pt={2}>
+            }}
+          />
+        </Box>
+        <Box display="flex" justifyContent="flex-end" mt={2}>
           <Button
             onClick={handleContinue}
             disabled={!inputValue.trim()}
             sx={{
               width: 111,
               height: 32,
-              borderRadius: 1, // 8px
+              borderRadius: 1,
               backgroundColor: inputValue.trim() ? "#7695EC" : "#C0C0C0",
               textTransform: "none",
               color: "#ffffff",
