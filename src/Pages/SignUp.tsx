@@ -25,12 +25,14 @@ export function SignUp() {
       padding={2}
     >
       <Stack
-        spacing={3}
-        width={{ xs: 300, sm: 400, md: 500 }}
-        bgcolor="#fff"
+        width={{ xs: "100%", sm: 500 }}
+        minHeight={205}
+        maxHeight={400}
+        bgcolor="#FFFFFF"
         padding={3}
-        borderRadius={3}
-        boxShadow={3}
+        borderRadius={4}
+        border="1px solid #CCCCCC"
+        boxShadow={0}
         alignItems="stretch"
       >
         <Stack gap={3}>
@@ -38,7 +40,7 @@ export function SignUp() {
             Welcome to CodeLeap network!
           </Typography>
           <Typography fontSize="16px" color="textPrimary">
-            Please enter your username
+            Please enter your usernameaa
           </Typography>
         </Stack>
 
@@ -50,9 +52,10 @@ export function SignUp() {
           sx={{
             width: { xs: "100%", sm: 452 },
             height: 32,
+            paddingY: 1,
             "& .MuiOutlinedInput-root": {
               height: 32,
-              borderRadius: 1, // 8px
+              borderRadius: 1,
               "& fieldset": {
                 borderColor: "#777777",
                 borderWidth: 1,
@@ -82,14 +85,14 @@ export function SignUp() {
           }}
         />
 
-        <Box display="flex" justifyContent="flex-end">
+        <Box display="flex" justifyContent="flex-end" pt={2} pb={3}>
           <Button
             onClick={handleContinue}
             disabled={!inputValue.trim()}
             sx={{
-              width: { xs: 111, sm: 120 },
+              width: 111,
               height: 32,
-              borderRadius: 1,
+              borderRadius: 1, // 8px
               backgroundColor: inputValue.trim() ? "#7695EC" : "#C0C0C0",
               textTransform: "none",
               color: "#ffffff",
