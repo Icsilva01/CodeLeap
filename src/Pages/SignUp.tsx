@@ -1,6 +1,6 @@
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // se for usar React Router
+import { useNavigate } from "react-router-dom";
 import { useName } from "../Context/UserContext";
 
 export function SignUp() {
@@ -9,10 +9,10 @@ export function SignUp() {
   const navigate = useNavigate();
 
   const handleContinue = () => {
-    if (!inputValue.trim()) return; // não aceita vazio
+    if (!inputValue.trim()) return;
     setUsername(inputValue.trim());
-    localStorage.setItem("codeleap_username", inputValue.trim()); // opcional: persiste no localStorage
-    navigate("/main"); // redireciona para a tela principal
+    localStorage.setItem("codeleap_username", inputValue.trim());
+    navigate("/main");
   };
 
   return (
@@ -21,37 +21,88 @@ export function SignUp() {
       justifyContent="center"
       alignItems="center"
       minHeight="100vh"
-      bgcolor="#F5F5F5"
+      bgcolor="#DDDDDD"
       padding={2}
     >
       <Stack
-        spacing={4}
+        spacing={3}
         width={{ xs: 300, sm: 400, md: 500 }}
         bgcolor="#fff"
-        padding={4}
+        padding={3}
         borderRadius={3}
         boxShadow={3}
-        alignItems="center"
+        alignItems="stretch"
       >
-        <Typography variant="h4" fontWeight={500} color="primary">
-          Bem-vindo ao CodeLeap
-        </Typography>
+        <Stack gap={3}>
+          <Typography fontWeight={700} color="textPrimary" fontSize="22px">
+            Welcome to CodeLeap network!
+          </Typography>
+          <Typography fontSize="16px" color="textPrimary">
+            Please enter your username
+          </Typography>
+        </Stack>
 
         <TextField
-          label="Digite seu nome"
+          placeholder="John Doe"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           fullWidth
+          sx={{
+            width: { xs: "100%", sm: 452 },
+            height: 32,
+            "& .MuiOutlinedInput-root": {
+              height: 32,
+              borderRadius: 1, // 8px
+              "& fieldset": {
+                borderColor: "#777777",
+                borderWidth: 1,
+              },
+              "&:hover fieldset": {
+                borderColor: "#777777",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "#7695EC",
+              },
+            },
+            "& .MuiInputBase-input": {
+              padding: "6px 12px",
+              height: 20,
+              fontWeight: 400,
+              fontSize: "14px",
+              lineHeight: "100%",
+              letterSpacing: "0%",
+              "&::placeholder": {
+                fontWeight: 400,
+                fontSize: "14px",
+                lineHeight: "100%",
+                opacity: 1,
+                color: "#777777",
+              },
+            },
+          }}
         />
 
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleContinue}
-          fullWidth
-        >
-          Continuar
-        </Button>
+        <Box display="flex" justifyContent="flex-end">
+          <Button
+            onClick={handleContinue}
+            disabled={!inputValue.trim()}
+            sx={{
+              width: { xs: 111, sm: 120 },
+              height: 32,
+              borderRadius: 1,
+              backgroundColor: inputValue.trim() ? "#7695EC" : "#C0C0C0",
+              textTransform: "none",
+              color: "#ffffff",
+              fontWeight: 700,
+              fontSize: "16px",
+              "&:hover": {
+                backgroundColor: inputValue.trim() ? "#5a7bd6" : "#C0C0C0",
+              },
+            }}
+          >
+            Enter
+          </Button>
+        </Box>
       </Stack>
     </Box>
   );
