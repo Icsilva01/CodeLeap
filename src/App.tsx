@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { SignUp } from "./Pages/SignUp";
 
 export function App() {
   return (
@@ -10,7 +11,7 @@ export function App() {
       height="100vh"
       bgcolor={"#DDDDDD"}
     >
-      olá mundo
+      <SignUp/>
     </Box>
   );
 }
