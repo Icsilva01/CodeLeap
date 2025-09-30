@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { SignUp } from "./Pages/SignUp";
+import { AppRoutes } from "./Router";
 
 export function App() {
   return (
@@ -9,9 +9,10 @@ export function App() {
       alignItems="center"
       width={1}
       height="100vh"
-      bgcolor={"#DDDDDD"}
+      bgcolor="#DDDDDD"
+      padding={2}
     >
-      <SignUp/>
+      <AppRoutes />
     </Box>
   );
 }

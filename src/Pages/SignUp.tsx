@@ -1,4 +1,3 @@
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // se for usar React Router
@@ -7,7 +6,7 @@ import { useName } from "../Context/UserContext";
 export function SignUp() {
   const { username, setUsername } = useName();
   const [inputValue, setInputValue] = useState(username);
-  const navigate = useNavigate(); // para redirecionar para a Main
+  const navigate = useNavigate();
 
   const handleContinue = () => {
     if (!inputValue.trim()) return; // não aceita vazio
@@ -48,7 +47,6 @@ export function SignUp() {
         <Button
           variant="contained"
           color="primary"
-          endIcon={<ArrowForwardIcon />}
           onClick={handleContinue}
           fullWidth
         >
