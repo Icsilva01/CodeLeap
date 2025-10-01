@@ -20,7 +20,6 @@ export const Main = () => {
   const [content, setContent] = useState("");
   const [posts, setPosts] = useState<Post[]>([]);
 
-  // estados para editar/deletar
   const [openDelete, setOpenDelete] = useState<null | number>(null);
   const [openEdit, setOpenEdit] = useState<null | Post>(null);
   const [editTitle, setEditTitle] = useState("");
@@ -79,11 +78,10 @@ export const Main = () => {
     }
   };
 
-  // função utilitária para formatar tempo
   const timeAgo = (dateString: string) => {
     const now = new Date();
     const postDate = new Date(dateString);
-    const diff = Math.floor((now.getTime() - postDate.getTime()) / 1000); // em segundos
+    const diff = Math.floor((now.getTime() - postDate.getTime()) / 1000);
 
     if (diff < 60) return `${diff}s ago`;
     if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
@@ -114,7 +112,7 @@ export const Main = () => {
           </Typography>
         </Box>
 
-        {/* Formulário */}
+        {/* Form */}
         <Stack spacing={2} px={3}>
           <Box
             sx={{
@@ -220,8 +218,8 @@ export const Main = () => {
           px={3}
           pb={4}
           sx={{
-            flex: 1,// ocupa o espaço que sobrar
-            overflowY: "auto",// scroll só aqui
+            flex: 1,
+            overflowY: "auto",
           }}
         >
           {posts.map((post) => (
@@ -241,15 +239,13 @@ export const Main = () => {
                 sx={{
                   borderTopLeftRadius: 8,
                   borderTopRightRadius: 8,
-                  px: 2, // padding horizontal
-                  py: 1, // padding vertical
+                  px: 2,
+                  py: 1,
                 }}
               >
                 <Typography fontWeight={700} color="#FFFFFF">
                   {post.title}
                 </Typography>
-
-                {/* Ícones só aparecem se o post for do usuário logado */}
                 {post.username === username && (
                   <Box display="flex" gap={1}>
                     <IconButton

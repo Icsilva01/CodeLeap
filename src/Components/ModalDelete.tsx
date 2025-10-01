@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle, DialogActions, Button, Box } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 
 interface DeleteModalProps {
   open: boolean;
@@ -15,9 +15,9 @@ export const DeleteModal = ({ open, onClose, onDelete }: DeleteModalProps) => {
         sx: {
           width: 660,
           height: 146,
-          borderRadius: 2, // 16px
+          borderRadius: 2,
           border: "1px solid #CCCCCC",
-          overflow: "hidden", // evita margin extra
+          overflow: "hidden",
         },
       }}
     >

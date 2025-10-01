@@ -34,9 +34,9 @@ export const EditModal = ({
       sx: {
         width: 660,
         minHeight: 334,
-        borderRadius: 2, // 16px
+        borderRadius: 2,
         border: "1px solid #CCCCCC",
-        overflow: "hidden", // evita margin extra
+        overflow: "hidden",
       },
     }}
     >
@@ -61,7 +61,7 @@ export const EditModal = ({
             onChange={(e) => setTitle(e.target.value)}
             sx={{
               height: 32,
-              borderRadius: 2, // 8px
+              borderRadius: 2,
               paddingBottom: 1,
               "& .MuiOutlinedInput-root": {
                 height: 32,

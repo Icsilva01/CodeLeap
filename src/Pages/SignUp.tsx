@@ -35,7 +35,6 @@ export function SignUp() {
         boxShadow={0}
         alignItems="stretch"
       >
-        {/* Gap de 24px entre os textos */}
         <Stack spacing={3}>
           <Typography fontWeight={700} color="textPrimary" fontSize="22px">
             Welcome to CodeLeap network!
@@ -45,7 +44,6 @@ export function SignUp() {
           </Typography>
         </Stack>
 
-        {/* Gap de 8px entre último Typography e TextField */}
         <Box mt={1}>
           <TextField
             placeholder="John Doe"
