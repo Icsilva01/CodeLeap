@@ -1,4 +1,13 @@
-import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button, Stack } from "@mui/material";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  Button,
+  Stack,
+  Typography,
+} from "@mui/material";
 
 interface EditModalProps {
   open: boolean;
@@ -20,34 +29,92 @@ export const EditModal = ({
   onSave,
 }: EditModalProps) => {
   return (
-    <Dialog open={open} onClose={onClose} fullWidth>
-      <DialogTitle>Edit post</DialogTitle>
+    <Dialog open={open} onClose={onClose} fullWidth
+    PaperProps={{
+      sx: {
+        width: 660,
+        minHeight: 334,
+        borderRadius: 2, // 16px
+        border: "1px solid #CCCCCC",
+        overflow: "hidden", // evita margin extra
+      },
+    }}
+    >
+      <DialogTitle
+        sx={{
+          p: "24px",
+          m: 0,
+          fontWeight: 700,
+          fontSize: 22,
+        }}
+      >
+        Edit item
+      </DialogTitle>
       <DialogContent>
-        <Stack spacing={2} mt={1}>
+        <Stack>
+          <Typography fontSize={16} fontWeight={400} pb={1}>
+            Title
+          </Typography>
           <TextField
-            label="Title"
             fullWidth
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            sx={{
+              height: 32,
+              borderRadius: 2, // 8px
+              paddingBottom: 1,
+              "& .MuiOutlinedInput-root": {
+                height: 32,
+                borderRadius: 1,
+                "& fieldset": {
+                  borderColor: "#777777",
+                  borderWidth: 1,
+                },
+              },
+            }}
           />
+          <Typography fontSize={16} fontWeight={400} pt={3} pb={1}>
+            Content
+          </Typography>
           <TextField
-            label="Content"
             fullWidth
             multiline
             rows={4}
             value={content}
             onChange={(e) => setContent(e.target.value)}
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                borderRadius: 2,
+                "& fieldset": {
+                  borderColor: "#777777",
+                  borderWidth: 1,
+                },
+                "&:hover fieldset": {
+                  borderColor: "#777777",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#777777",
+                },
+              },
+            }}
           />
         </Stack>
       </DialogContent>
-      <DialogActions>
+      <DialogActions sx={{paddingBottom: 2}}>
         <Button
           onClick={onClose}
           sx={{
+            width: 120,
+            height: 32,
+            borderRadius: 1,
+            border: "1px solid #000",
             bgcolor: "#FFFFFF",
-            border: "1px solid #CCCCCC",
             color: "#000",
-            "&:hover": { bgcolor: "#f5f5f5" },
+            fontWeight:700,
+            textTransform: "none",
+            "&:hover": {
+              bgcolor: "#e0e0e0",
+            },
           }}
         >
           Cancel
@@ -57,9 +124,15 @@ export const EditModal = ({
           variant="contained"
           disabled={!title.trim() || !content.trim()}
           sx={{
-            bgcolor: "#7695EC",
-            color: "#fff",
-            "&:hover": { bgcolor: "#5a7bd6" },
+            width: 120,
+            height: 32,
+            bgcolor: "#47B960",
+            color: "#000",
+            fontWeight:700,
+            textTransform: "none",
+            "&:hover": {
+              bgcolor: "#47B960",
+            },
           }}
         >
           Save

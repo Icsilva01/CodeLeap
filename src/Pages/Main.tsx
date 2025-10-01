@@ -1,4 +1,4 @@
-import { Delete, Edit } from "@mui/icons-material";
+import { DeleteForever, Edit } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -79,20 +79,33 @@ export const Main = () => {
     }
   };
 
+  // função utilitária para formatar tempo
+  const timeAgo = (dateString: string) => {
+    const now = new Date();
+    const postDate = new Date(dateString);
+    const diff = Math.floor((now.getTime() - postDate.getTime()) / 1000); // em segundos
+
+    if (diff < 60) return `${diff}s ago`;
+    if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+    if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+    return `${Math.floor(diff / 86400)}d ago`;
+  };
+
   return (
     <Box
       display="flex"
       justifyContent="center"
       alignItems="flex-start"
-      minHeight="100vh"
       bgcolor="#DDDDDD"
+      minHeight="100vh"
+      width={1}
     >
       <Stack
         width={{ xs: "100%", sm: 800 }}
         bgcolor="#FFFFFF"
-        minHeight="100vh"
         boxShadow={0}
         spacing={3}
+        height="100vh"
       >
         {/* Header */}
         <Box pl={4} bgcolor={"#7695EC"} py={"27px"}>
@@ -106,7 +119,7 @@ export const Main = () => {
           <Box
             sx={{
               width: 752,
-              height: 334,
+              height: 350,
               borderRadius: 2, // 16px
               border: "1px solid #999999",
               p: 3, // padding interno para ficar com espaçamento
@@ -201,24 +214,33 @@ export const Main = () => {
           </Box>
         </Stack>
 
-        {/* Lista de posts */}
-        <Stack spacing={2} px={3} pb={4}>
+        {/* Lists of posts */}
+        <Stack
+          spacing={2}
+          px={3}
+          pb={4}
+          sx={{
+            flex: 1,// ocupa o espaço que sobrar
+            overflowY: "auto",// scroll só aqui
+          }}
+        >
           {posts.map((post) => (
             <Box
               key={post.id}
               border="1px solid #CCCCCC"
               borderRadius={2}
               bgcolor="#fff"
+              height={316}
             >
-              {/* Header do post com título e botões */}
+              {/* Header */}
               <Box
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
                 bgcolor="#7695EC"
                 sx={{
-                  borderTopLeftRadius: 8, // acompanha o borderRadius do post
-                  borderTopRightRadius: 8, // acompanha o borderRadius do post
+                  borderTopLeftRadius: 8,
+                  borderTopRightRadius: 8,
                   px: 2, // padding horizontal
                   py: 1, // padding vertical
                 }}
@@ -232,6 +254,15 @@ export const Main = () => {
                   <Box display="flex" gap={1}>
                     <IconButton
                       size="small"
+                      onClick={() => setOpenDelete(post.id)}
+                    >
+                      <DeleteForever
+                        fontSize="small"
+                        sx={{ color: "#FFFFFF" }}
+                      />
+                    </IconButton>
+                    <IconButton
+                      size="small"
                       onClick={() => {
                         setOpenEdit(post);
                         setEditTitle(post.title);
@@ -240,18 +271,17 @@ export const Main = () => {
                     >
                       <Edit fontSize="small" sx={{ color: "#FFFFFF" }} />
                     </IconButton>
-                    <IconButton
-                      size="small"
-                      onClick={() => setOpenDelete(post.id)}
-                    >
-                      <Delete fontSize="small" sx={{ color: "#FFFFFF" }} />
-                    </IconButton>
                   </Box>
                 )}
               </Box>
-              <Typography fontSize={12} color="gray" px={2}>
-                @{post.username}
-              </Typography>
+              <Box display="flex" justifyContent="space-between" px={2} pt={2}>
+                <Typography fontSize={12} color="gray">
+                  @{post.username}
+                </Typography>
+                <Typography fontSize={12} color="gray">
+                  {timeAgo(post.created_datetime)}
+                </Typography>
+              </Box>
 
               <Typography fontSize={14} color="text.secondary" mt={1} px={2}>
                 {post.content}
