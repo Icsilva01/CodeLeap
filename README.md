@@ -1,73 +1,115 @@
-# React + TypeScript + Vite
+# CodeLeap Network Clone  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a **React + TypeScript** implementation of a social network clone based on the **CodeLeap challenge**.  
+It allows users to **sign up with a username, create posts, edit them, and delete them**.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features  
 
-## React Compiler
+- 🔐 **Sign up** with a username  
+- 📝 **Create new posts** (with title and content)  
+- ✏️ **Edit existing posts**  
+- 🗑️ **Delete posts**  
+- 👤 Posts display the **author’s username**  
+- ⏳ **Relative time display** for post creation (`x minutes ago`, `x hours ago`, etc.)  
+- 🎨 **Material UI components** for a clean and responsive design  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 18**  
+- **TypeScript**  
+- **Material UI (MUI)**  
+- **Axios** (API requests)
+- **React-Router-Dom** (Handle navigation between pages)  
+- **Vite** (build tool)  
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📂 Project Structure  
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+ ├── Components/
+ │    ├── ModalDelete.tsx    # Delete confirmation modal
+ │    ├── ModalEdite.tsx     # Edit post modal
+ │    └── types.ts           # Type definitions
+ │
+ ├── Context/
+ │    └── UserContext.tsx    # Context to handle username globally
+ │
+ ├── Services/
+ │    └── api.ts             # API requests (fetch, create, edit, delete posts)
+ ├── Router/
+ │    └── index.tsx          # Centralized routing configuration
+ │
+ ├── Pages/
+ │    ├── Main.tsx           # Main feed page
+ │    └── SignUp.tsx         # Sign up page
+ │
+ ├── App.tsx
+ └── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Getting Started  
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the repository  
+
+```bash
+git clone https://github.com/Icsilva01/CodeLeap.git
+cd codeleap-network-clone
 ```
+
+### 2. Install dependencies  
+
+```bash
+npm install
+```
+
+### 3. Run the project  
+
+```bash
+npm run dev
+```
+
+App will be available at:  
+👉 [http://localhost:5173](http://localhost:5173)  
+
+---
+
+## 🌍 API  
+
+The project uses the **CodeLeap public API**:  
+
+Base URL:  
+```
+https://dev.codeleap.co.uk/careers/
+```
+
+Endpoints:  
+- `GET /` → Fetch posts  
+- `POST /` → Create a new post  
+- `PATCH /:id/` → Edit post  
+- `DELETE /:id/` → Delete post  
+
+---
+
+## 📸 Screenshots  
+
+### Sign Up  
+User provides a username before entering the feed.  
+
+### Feed Page  
+- Create a new post  
+- See all posts  
+- Edit or delete your own posts  
+
+---
+
+## 🧑‍💻 Author  
+
+Developed by **[Icaro Silva]** ✨  
