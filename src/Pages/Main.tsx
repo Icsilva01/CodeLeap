@@ -116,7 +116,7 @@ export const Main = () => {
         <Stack spacing={2} px={3}>
           <Box
             sx={{
-              width: 752,
+              maxWidth: 752,
               height: 350,
               borderRadius: 2, // 16px
               border: "1px solid #999999",

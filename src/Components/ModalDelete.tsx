@@ -14,7 +14,7 @@ export const DeleteModal = ({ open, onClose, onDelete }: DeleteModalProps) => {
       PaperProps={{
         sx: {
           width: 660,
-          height: 146,
+          minHeight: 146,
           borderRadius: 2,
           border: "1px solid #CCCCCC",
           overflow: "hidden",
